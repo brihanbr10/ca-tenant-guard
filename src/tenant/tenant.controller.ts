@@ -5,7 +5,7 @@ import { UpdateTenantDto } from './dto/update-tenant.dto';
 
 @Controller('tenant')
 export class TenantController {
-  constructor(private readonly tenantService: TenantService) {}
+  constructor(private readonly tenantService: TenantService) { }
 
   @Post()
   create(@Body() createTenantDto: CreateTenantDto) {
@@ -17,18 +17,18 @@ export class TenantController {
     return this.tenantService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.tenantService.findOne(+id);
+  @Get(':tenant_key')
+  findOne(@Param('tenant_key') tenantKey: string) {
+    return this.tenantService.findByKey(tenantKey);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTenantDto: UpdateTenantDto) {
-    return this.tenantService.update(+id, updateTenantDto);
+  @Patch()
+  update(@Body() updateTenantDto: UpdateTenantDto) {
+    return this.tenantService.update(updateTenantDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.tenantService.remove(+id);
+    return this.tenantService.delete(id);
   }
 }
