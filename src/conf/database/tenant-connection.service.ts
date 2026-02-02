@@ -44,7 +44,6 @@ export class TenantConnectionService implements OnModuleDestroy {
 
         const dataSource = createTenantDataSource(
             tenant.dbConnectionString,
-            [Client],
         );
 
         await dataSource.initialize();

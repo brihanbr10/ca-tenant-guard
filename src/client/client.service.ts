@@ -42,7 +42,7 @@ export class ClientService {
     }
 
     const clientRepository = dataSource.getRepository(Client);
-    return clientRepository.findOneBy({ id });
+    return clientRepository.findOneBy({ id: id });
   }
 
   async update(id: string, updateClientDto: UpdateClientDto) {
@@ -54,7 +54,7 @@ export class ClientService {
 
     const clientRepository = dataSource.getRepository(Client);
     await clientRepository.update(id, updateClientDto);
-    return clientRepository.findOneBy({ id });
+    return clientRepository.findOneBy({ id: id });
   }
 
   async remove(id: string) {

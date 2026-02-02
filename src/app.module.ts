@@ -21,8 +21,11 @@ import { TenantMiddleware } from './tenant/tenant.middleware';
       entities: [Tenant],
       schema: 'controlapp',
       synchronize: true,
-      ssl: {
-        ca: fs.readFileSync('./ca.pem').toString(),
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
+          ca: fs.readFileSync('./src/ca.pem').toString(),
+        },
       },
     }),
     TenantModule,
